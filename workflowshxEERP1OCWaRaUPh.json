@@ -1,0 +1,216 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-15T01:44:32.300Z",
+  "id": "hxEERP1OCWaRaUPh",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "工作流：将最新ai消息（网页获取）保存到notion数据库",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        -160
+      ],
+      "id": "ae09f06c-46a6-4973-b5ef-74670f951c3b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+        "options": {
+          "ignoreSSL": false
+        }
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        220,
+        -40
+      ],
+      "id": "18625004-56c1-49c0-b814-a411480b2584",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 处理RSS Feed返回的数据\nconst results = [];\nconst existingTitles = new Set();\n\n// 检查是否有数据\nif (!items || items.length === 0) {\n  return [];\n}\n\n// 遍历所有RSS条目\nfor (const item of items) {\n  // 提取文章信息\n  const title = item.json.title || '';\n  const description = item.json.content || item.json.contentSnippet || '';\n  const link = item.json.link || '';\n  const pubDate = item.json.pubDate || item.json.isoDate || new Date().toISOString();\n  const source = item.json.source?.name || 'Technology Review';\n  \n  // 检查是否与AI相关\n  const titleLower = title.toLowerCase();\n  const descLower = description.toLowerCase();\n  const aiKeywords = ['ai', 'artificial intelligence', '人工智能', '大模型', 'llm', 'chatgpt', 'gpt'];\n  \n  const isAIRelated = aiKeywords.some(keyword => \n    titleLower.includes(keyword) || descLower.includes(keyword));\n  \n  // 如果与AI相关且未重复，添加到结果中\n  if (isAIRelated && !existingTitles.has(title)) {\n    existingTitles.add(title);\n    \n    // 提取所有标签并存储在一个数组中\n    const tags = [];\n    \n    // 从RSS分类中提取标签\n    if (item.json.categories && Array.isArray(item.json.categories)) {\n      for (const category of item.json.categories) {\n        // 避免添加重复标签\n        if (!tags.some(tag => tag.name === category)) {\n          tags.push({ name: category });\n        }\n      }\n    }\n    \n    // 基于内容关键词添加额外标签\n    const tagKeywords = [\n      { keyword: 'chatgpt', tag: 'ChatGPT' },\n      { keyword: 'gpt', tag: 'GPT' },\n      { keyword: 'llm', tag: '大模型' },\n      { keyword: '大模型', tag: '大模型' },\n      { keyword: 'artificial intelligence', tag: 'Artificial Intelligence' },\n      { keyword: '人工智能', tag: '人工智能' },\n      { keyword: 'algorithm', tag: 'The Algorithm' },\n      { keyword: '算法', tag: '算法' },\n      { keyword: 'machine learning', tag: '机器学习' },\n      { keyword: '机器学习', tag: '机器学习' }\n    ];\n    \n    for (const { keyword, tag } of tagKeywords) {\n      if ((titleLower.includes(keyword) || descLower.includes(keyword)) && \n          !tags.some(t => t.name === tag)) {\n        tags.push({ name: tag });\n      }\n    }\n    \n    // 如果没有标签，添加默认标签\n    if (tags.length === 0) {\n      tags.push({ name: 'AI' });\n    }\n    \n    // 创建Notion数据库条目格式\n    results.push({\n      json: {\n        properties: {\n          '标题': {\n            title: [{ text: { content: title } }]\n          },\n          '内容': {\n            rich_text: [{ text: { content: description.substring(0, 2000) } }] // Notion限制rich_text长度\n          },\n          '来源': {\n            select: { name: source }\n          },\n          '发布日期': {\n            date: { start: pubDate }\n          },\n          '链接': {\n            url: link\n          },\n          '标签': {\n            multi_select: tags // 作为一个完整的数组传递\n          }\n        }\n      }\n    });\n  }\n}\n\nreturn results;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        -40
+      ],
+      "id": "ea443a5a-4d29-43fe-8bd3-e363abd9b136",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "databaseId": {
+          "__rl": true,
+          "value": "2304e51e-930e-80d7-be74-c7346244643a",
+          "mode": "list",
+          "cachedResultName": "AI热点消息",
+          "cachedResultUrl": "https://www.notion.so/2304e51e930e80d7be74c7346244643a"
+        },
+        "title": "={{ $json.properties['标题'].title[0].text.content }}",
+        "simple": false,
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "内容|rich_text",
+              "textContent": "={{ $json.properties['内容'].rich_text[0].text.content }}"
+            },
+            {
+              "key": "发布日期|date",
+              "date": "={{ $json.properties['发布日期'].date.start }}"
+            },
+            {
+              "key": "来源|rich_text",
+              "textContent": "={{ $json.properties['来源'].select.name }}"
+            },
+            {
+              "key": "链接|url",
+              "urlValue": "={{ $json.properties['链接'].url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        -40
+      ],
+      "id": "8b29ba42-f673-462f-9ca4-eb62692c4592",
+      "name": "Create a database page",
+      "credentials": {
+        "notionApi": {
+          "id": "Kt6w6dQmgrR9N9aM",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 13,
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -60,
+        120
+      ],
+      "id": "25ca202f-29ef-4d19-9ddd-903344422037",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "content": "## 点击触发",
+        "height": 240,
+        "width": 300,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -180,
+        -220
+      ],
+      "typeVersion": 1,
+      "id": "136b7597-842a-4fca-86fe-a290b7cd093c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## 定时触发",
+        "height": 240,
+        "width": 300
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -180,
+        60
+      ],
+      "typeVersion": 1,
+      "id": "4f9325c1-6182-4274-ac3b-32c6c7595859",
+      "name": "Sticky Note1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-07-15T01:44:32.307Z",
+      "updatedAt": "2025-07-15T01:44:32.307Z",
+      "role": "workflow:owner",
+      "workflowId": "hxEERP1OCWaRaUPh",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-15T12:42:16.000Z",
+  "versionId": "236c0768-cd59-4de3-8c36-65dea0a04a16"
+}
