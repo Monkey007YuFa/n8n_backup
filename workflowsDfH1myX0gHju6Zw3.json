@@ -329,8 +329,8 @@
       "name": "Return",
       "type": "n8n-nodes-base.set",
       "position": [
-        2352,
-        848
+        2368,
+        992
       ],
       "typeVersion": 3.3
     },
@@ -555,8 +555,8 @@
       "name": "Loop Over Items",
       "type": "n8n-nodes-base.splitInBatches",
       "position": [
-        912,
-        368
+        944,
+        352
       ],
       "typeVersion": 3
     },
@@ -564,9 +564,7 @@
       "parameters": {
         "rule": {
           "interval": [
-            {
-              "triggerAtHour": 7
-            }
+            {}
           ]
         }
       },
@@ -598,16 +596,15 @@
     {
       "parameters": {
         "content": "## Main workflow loop",
-        "height": 434.88564057365943,
-        "width": 886.4410237965205,
-        "color": 7
+        "height": 435,
+        "width": 966
       },
       "id": "0e1efd38-3095-4c40-beaa-ee43a9249dbc",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         400,
-        192
+        176
       ],
       "typeVersion": 1
     },
@@ -734,8 +731,8 @@
       "name": "Execute Workflow",
       "type": "n8n-nodes-base.executeWorkflow",
       "position": [
-        1184,
-        384
+        1216,
+        368
       ],
       "typeVersion": 1.2
     },
@@ -849,6 +846,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-28T01:50:40.000Z",
-  "versionId": "087288c0-0a4f-4f76-a035-a42d10941f18"
+  "updatedAt": "2025-08-28T01:54:47.000Z",
+  "versionId": "f70b2339-ca8e-44a8-97a7-c6ed0da1e42c"
 }
