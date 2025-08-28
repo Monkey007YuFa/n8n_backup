@@ -1,0 +1,224 @@
+{
+  "active": true,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get many database pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get many database pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many database pages": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send email": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-08-27T02:13:17.808Z",
+  "id": "foOKvqUuZofhCMs9",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "周报每周五定时生成",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        -176
+      ],
+      "id": "124eff07-1c26-4016-a45f-42a5c03b41b2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                5
+              ],
+              "triggerAtHour": 14
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -608,
+        0
+      ],
+      "id": "746539cd-c24e-47fa-a0fe-f5ae936ffb9f",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.property_work_content }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "请根据我本周的工作内容，按照以下周报模板生成一份详细的周报。要求如下：\n\n1. 严格按照模板格式整理，没有的项目请标注\"无\"\n2. 内容要具体详实，避免笼统表述，精确到具体任务和成果\n3. 对相似工作进行合理精炼，避免重复\n4. 突出工作量和实际成效，强调关键成果和突破性方法\n5. 仅填写我实际参与的项目，不要捏造项目名称或工作内容\n6、要突出这周工作量，不能让领导感觉我这周啥也没干！\n7、多写结论，成效，或者有突破性的方法。\n\n周报模板：\n\n一、在研项目执行情况：\n（一）国家级项目\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n（二）公司任务制项目\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n（三）公司指南项目：\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n（四）集团任务制项目：\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n二、项目策划与立项：\n（一）国家级项目\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n（二）公司任务制项目\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n（三）公司指南类一般项目：\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n（四）集团任务制项目：\n1、《项目名称：xxxxx》：本周开展XXX,完成XXX\n三、科研成果：\n（一）奖项申报\n（二）论文专利\n（三）成果转化应用\n四、技术交流（包括但不限于：参加各类学术会议、与高校、网省公司、集团内部单位开展的调研、技术交流等活动）\nXXX\n五、业务支撑与其他（包括但不限于：支撑公司、集团各部门撰写各类材料）\nXXX\n六、下周重点工作计划\nXXX\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        -80
+      ],
+      "id": "8674aa9b-a2de-4b09-8116-7b528366eb4f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        128
+      ],
+      "id": "39e3ac7f-0ac6-4b76-81d2-337807546228",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "2Dzc7FHl1bDBF8HO",
+          "name": "DeepSeek API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "23b4e51e-930e-806f-8376-fd6bf6a79d5b",
+          "mode": "list",
+          "cachedResultName": "南瑞周报数据库",
+          "cachedResultUrl": "https://www.notion.so/23b4e51e930e806f8376fd6bf6a79d5b"
+        },
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        -304,
+        -80
+      ],
+      "id": "0d038641-30d6-43f7-bdcd-b4c6f2cef62a",
+      "name": "Get many database pages",
+      "alwaysOutputData": false,
+      "notesInFlow": false,
+      "retryOnFail": false,
+      "executeOnce": false,
+      "credentials": {
+        "notionApi": {
+          "id": "NbdW9ArXkaSIpcEG",
+          "name": "notion周报数据库"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "1664040898@qq.com",
+        "toEmail": "hmq007@whu.edu.cn",
+        "subject": "本周周报",
+        "html": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        -80
+      ],
+      "id": "caf122c1-8959-460a-aaf8-c7591b752b53",
+      "name": "Send email",
+      "webhookId": "05b3ade5-fde6-4c3f-b02a-ab6aff6e5ff9",
+      "credentials": {
+        "smtp": {
+          "id": "8tXXdu6E7HSjXVim",
+          "name": "SMTP account（166qq）"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-27T02:13:17.825Z",
+      "updatedAt": "2025-08-27T02:13:17.825Z",
+      "role": "workflow:owner",
+      "workflowId": "foOKvqUuZofhCMs9",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-27T14:47:03.000Z",
+  "versionId": "4f9d7cfb-e930-4caf-8694-7bc0386ab5b0"
+}
