@@ -398,7 +398,7 @@
       "name": "Merge Items",
       "type": "n8n-nodes-base.merge",
       "position": [
-        1248,
+        1296,
         1072
       ],
       "typeVersion": 2
@@ -846,6 +846,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-28T01:54:47.000Z",
-  "versionId": "f70b2339-ca8e-44a8-97a7-c6ed0da1e42c"
+  "updatedAt": "2025-08-28T14:09:39.000Z",
+  "versionId": "10645449-99f3-4df1-b794-e0504f0a7252"
 }
