@@ -1,0 +1,28 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-08-28T02:13:12.116Z",
+  "id": "hKoXft0pP1D1n2xC",
+  "isArchived": true,
+  "meta": null,
+  "name": "slack通知",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-08-28T02:13:12.123Z",
+      "updatedAt": "2025-08-28T02:13:12.123Z",
+      "role": "workflow:owner",
+      "workflowId": "hKoXft0pP1D1n2xC",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-08-28T02:39:39.000Z",
+  "versionId": "5bbee013-7e44-4849-8d27-a98d9cc44faa"
+}
