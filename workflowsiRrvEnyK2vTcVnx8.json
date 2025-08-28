@@ -1,0 +1,124 @@
+{
+  "active": false,
+  "connections": {
+    "点击": {
+      "main": [
+        [
+          {
+            "node": "X",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "数据处理": {
+      "main": [
+        [
+          {
+            "node": "降重",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "X": {
+      "main": [
+        [
+          {
+            "node": "数据处理",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-15T13:03:40.278Z",
+  "id": "iRrvEnyK2vTcVnx8",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "工作流：从X平台获取最新的ai消息并且保存在notion数据库中",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "searchText": "=(AI OR \"artificial intelligence\" OR \"machine learning\" OR \"deep learning\" OR ChatGPT OR GPT OR \"neural network\" OR \"large language model\" OR LLM) -is:retweet lang:en",
+        "limit": 10,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [
+        -1700,
+        -260
+      ],
+      "id": "2aaadae5-b310-44ac-a4e2-ff9c7ccb9836",
+      "name": "X",
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "4qoNpD9WuKWXdTZJ",
+          "name": "X account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const tweet = item.json;\n  return {\n    json: {\n      名称: tweet.text.substring(0, 100) + '...',\n      推文内容: tweet.text,\n      作者: tweet.author.username,\n      发布时间: tweet.created_at,\n      推文ID: tweet.id,\n      推文链接: `https://twitter.com/${tweet.author.username}/status/${tweet.id}`,\n      是否包含AI关键词: true,\n      处理状态: '已获取'\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1500,
+        -260
+      ],
+      "id": "fd988fd9-d7e9-4fc8-aea4-32797e80df9c",
+      "name": "数据处理"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1940,
+        -260
+      ],
+      "id": "255e0a1d-87c1-429d-ac9d-ac738fa34d97",
+      "name": "点击"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n\nconst seen = new Set();\nreturn items.filter(item => {\n  const tweetId = item.json.推文ID;\n  if (seen.has(tweetId)) {\n    return false;\n  }\n  seen.add(tweetId);\n  return true;\n});\n\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1280,
+        -260
+      ],
+      "id": "58d3e3cd-226d-4276-aca8-edfd527eff77",
+      "name": "降重"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-07-15T13:03:40.282Z",
+      "updatedAt": "2025-07-15T13:03:40.282Z",
+      "role": "workflow:owner",
+      "workflowId": "iRrvEnyK2vTcVnx8",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-20T04:21:03.000Z",
+  "versionId": "4d3d95fd-5422-402a-8c33-111e73925ef6"
+}
