@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "/": {
       "main": [
@@ -262,7 +262,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 2",
+  "name": "n8n自动备份到github",
   "nodes": [
     {
       "parameters": {},
@@ -343,8 +343,8 @@
       "name": "Get File",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1440,
-        720
+        1536,
+        704
       ],
       "typeVersion": 4.2
     },
@@ -387,8 +387,8 @@
       "name": "If file too large",
       "type": "n8n-nodes-base.if",
       "position": [
-        1248,
-        752
+        1264,
+        720
       ],
       "typeVersion": 2
     },
@@ -399,7 +399,7 @@
       "type": "n8n-nodes-base.merge",
       "position": [
         1248,
-        1008
+        1072
       ],
       "typeVersion": 2
     },
@@ -411,8 +411,8 @@
       "name": "isDiffOrNew",
       "type": "n8n-nodes-base.code",
       "position": [
-        1440,
-        1008
+        1456,
+        1072
       ],
       "typeVersion": 1
     },
@@ -441,7 +441,7 @@
       "type": "n8n-nodes-base.switch",
       "position": [
         1664,
-        1008
+        1040
       ],
       "typeVersion": 1
     },
@@ -634,8 +634,8 @@
       "name": "Get file data",
       "type": "n8n-nodes-base.github",
       "position": [
-        1040,
-        752
+        1056,
+        720
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
@@ -694,7 +694,7 @@
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        800,
+        816,
         784
       ],
       "typeVersion": 1
@@ -734,8 +734,8 @@
       "name": "Execute Workflow",
       "type": "n8n-nodes-base.executeWorkflow",
       "position": [
-        1120,
-        352
+        1184,
+        384
       ],
       "typeVersion": 1.2
     },
@@ -757,8 +757,8 @@
       "name": "/",
       "type": "n8n-nodes-base.set",
       "position": [
-        592,
-        800
+        560,
+        720
       ],
       "typeVersion": 3.4
     },
@@ -842,9 +842,13 @@
       "projectId": "VqrcM1dcqhGnCvdT"
     }
   ],
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-08-28T01:41:44.000Z",
-  "versionId": "bf16eca1-5cd0-4695-b17c-5a254a3212aa"
+  "triggerCount": 1,
+  "updatedAt": "2025-08-28T01:50:40.000Z",
+  "versionId": "087288c0-0a4f-4f76-a035-a42d10941f18"
 }
