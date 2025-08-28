@@ -1,0 +1,307 @@
+{
+  "active": false,
+  "connections": {
+    "每周五（定时触发）": {
+      "main": [
+        [
+          {
+            "node": "获取日期范围",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "点击触发": {
+      "main": [
+        [
+          {
+            "node": "获取日期范围",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "获取日期范围": {
+      "main": [
+        [
+          {
+            "node": "获取符合日期要求的Page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "获取符合日期要求的Page": {
+      "main": [
+        [
+          {
+            "node": "重复读取每个页面内容",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notion": {
+      "main": [
+        [
+          {
+            "node": "重复读取每个页面内容",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "重复读取每个页面内容": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-20T06:07:56.614Z",
+  "id": "SsAb0ijUxpWv1Iig",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "AI 工作流 周报生成器",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        -380
+      ],
+      "id": "280c1075-74a4-489b-afa1-a8af52ef110c",
+      "name": "点击触发",
+      "notesInFlow": true,
+      "notes": "针对节假日等非正常情况"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                5
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -560,
+        -180
+      ],
+      "id": "705efbbd-d477-4765-86cd-0a36ec6362e3",
+      "name": "每周五（定时触发）",
+      "notesInFlow": true,
+      "notes": "大部分正常情况"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取当前日期\nconst today = new Date();\n// 使用中文格式化日期的函数\nfunction formatChineseDate(date) {\n  return `${date.getMonth() + 1}月${date.getDate()}日`;\n}\n\n// 计算本周一的日期\nconst monday = new Date(today);\n// getDay()返回0-6，0是周日，1是周一，所以需要特殊处理\nconst dayOfWeek = today.getDay();\nconst daysFromMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;\nmonday.setDate(today.getDate() - daysFromMonday);\n\n// 计算本周五的日期\nconst friday = new Date(monday);\nfriday.setDate(monday.getDate() + 4);\n\n// 格式化日期为MM.DD格式（用于文件名）\nconst formatDateForFileName = (date) => {\n  const month = String(date.getMonth() + 1).padStart(2, '0');\n  const day = String(date.getDate()).padStart(2, '0');\n  return `${month}${day}`;\n};\n\n// 生成周报标题和日期范围\nconst mondayStr = formatDateForFileName(monday);\nconst fridayStr = formatDateForFileName(friday);\nconst reportTitle = `${mondayStr}-${fridayStr}周报`;\nconst chineseDateRange = `（${formatChineseDate(monday)}-${formatChineseDate(friday)}）`;\n\n// 输出计算结果\nreturn {\n  json: {\n    reportTitle,\n    chineseDateRange,\n    startDate: monday.toISOString().split('T')[0],\n    endDate: friday.toISOString().split('T')[0],\n    startDateFormatted: formatChineseDate(monday),\n    endDateFormatted: formatChineseDate(friday),\n    // 额外添加下周一日期，用于生成下周计划\n    nextMonday: new Date(friday.getTime() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]\n  }\n}\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        -260
+      ],
+      "id": "9cfde58c-fe0d-4909-bbcb-ced3102e5c51",
+      "name": "获取日期范围"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "2304e51e-930e-80cc-b389-eab9b300b563",
+          "mode": "list",
+          "cachedResultName": "南瑞工作项目数据库",
+          "cachedResultUrl": "https://www.notion.so/2304e51e930e80ccb389eab9b300b563"
+        },
+        "returnAll": true,
+        "simple": false,
+        "filterType": "json",
+        "filterJson": "={\n  \"and\": [\n    {\n      \"property\": \"开始日期\",\n      \"date\": {\n        \"on_or_after\": \"{{$node['获取日期范围'].json.startDate}}\"\n      }\n    },\n    {\n      \"property\": \"开始日期\",\n      \"date\": {\n        \"on_or_before\": \"{{$node['获取日期范围'].json.endDate}}\"\n      }\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        -260
+      ],
+      "id": "c69dabb8-598b-489a-b3ee-f52be33b37e5",
+      "name": "获取符合日期要求的Page",
+      "credentials": {
+        "notionApi": {
+          "id": "2r7hd0GyOghtlztf",
+          "name": "Notion account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "block",
+        "operation": "getAll",
+        "blockId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        -120
+      ],
+      "id": "1f58d638-34af-4606-a085-a5e338263d4e",
+      "name": "Notion",
+      "credentials": {
+        "notionApi": {
+          "id": "2r7hd0GyOghtlztf",
+          "name": "Notion account 2"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        -340
+      ],
+      "id": "48ecaaad-5a57-4f0c-b968-dee57496d241",
+      "name": "Wait",
+      "webhookId": "17b4d0bc-31bf-4a58-a0b7-a2431e7eee58"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "你是一位专业的周报生成助手。请根据提供的工作数据生成一份详细、具体的周报。不要凭空生成内容，只使用提供的数据。突出实际工作成果，不要大段描述学习内容。尽可能详细，具体到某一件事情，不能很宽泛。要突出工作量，让领导清晰了解本周工作内容。格式要严格按照要求的模板。",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        820,
+        -340
+      ],
+      "id": "40f84925-21dd-436f-9bea-87cea52df4a2",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -140
+      ],
+      "id": "05a5dcf0-0f78-4d3f-9641-7fb3c6541449",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "2Dzc7FHl1bDBF8HO",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        200,
+        -260
+      ],
+      "id": "80d279a8-0a0f-4f67-b154-fe0ab5cc392c",
+      "name": "重复读取每个页面内容",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "retryOnFail": false
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-07-20T06:07:56.621Z",
+      "updatedAt": "2025-07-20T06:07:56.621Z",
+      "role": "workflow:owner",
+      "workflowId": "SsAb0ijUxpWv1Iig",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": {
+    "node:每周五（定时触发）": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-08-27T14:45:37.000Z",
+  "versionId": "99459161-f2de-4b3c-a7b6-2c38142a18f1"
+}
