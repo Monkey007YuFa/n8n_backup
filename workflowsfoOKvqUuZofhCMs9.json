@@ -23,17 +23,6 @@
         ]
       ]
     },
-    "DeepSeek Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Get many database pages": {
       "main": [
         [
@@ -59,6 +48,22 @@
     "Send email": {
       "main": [
         []
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -124,25 +129,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
-      "typeVersion": 1,
-      "position": [
-        -64,
-        128
-      ],
-      "id": "39e3ac7f-0ac6-4b76-81d2-337807546228",
-      "name": "DeepSeek Chat Model",
-      "credentials": {
-        "deepSeekApi": {
-          "id": "2Dzc7FHl1bDBF8HO",
-          "name": "DeepSeek API"
-        }
-      }
-    },
-    {
-      "parameters": {
         "resource": "databasePage",
         "operation": "getAll",
         "databaseId": {
@@ -197,6 +183,50 @@
           "name": "SMTP account（166qq）"
         }
       }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        288
+      ],
+      "id": "39e3ac7f-0ac6-4b76-81d2-337807546228",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "2Dzc7FHl1bDBF8HO",
+          "name": "DeepSeek API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        128
+      ],
+      "id": "ccc11ed9-e3e4-4059-b407-b98489c0bc7e",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "1SkwNAiseV0UDHcC",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -219,6 +249,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-27T14:47:03.000Z",
-  "versionId": "4f9d7cfb-e930-4caf-8694-7bc0386ab5b0"
+  "updatedAt": "2025-09-01T12:45:04.000Z",
+  "versionId": "6e579dfd-aba2-4ef7-b18b-103b248d06a6"
 }
