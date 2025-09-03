@@ -1,0 +1,28 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-09-03T01:01:57.088Z",
+  "id": "UlQ8mKxGIzsFAGmF",
+  "isArchived": false,
+  "meta": null,
+  "name": "根据关键词生成文章并保存到notion",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-03T01:01:57.095Z",
+      "updatedAt": "2025-09-03T01:01:57.095Z",
+      "role": "workflow:owner",
+      "workflowId": "UlQ8mKxGIzsFAGmF",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-03T01:02:26.000Z",
+  "versionId": "2b87c32e-a055-4ba4-bd75-92ff1c0e8971"
+}
