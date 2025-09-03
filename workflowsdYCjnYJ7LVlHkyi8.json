@@ -1,0 +1,1064 @@
+{
+  "active": false,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Page structure analiser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "get_image_url",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Webflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Haiku ": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Page structure analiser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webflow": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Articles": {
+      "ai_tool": [
+        [
+          {
+            "node": "Content writer",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get_image_url": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Content writer": {
+      "main": [
+        [
+          {
+            "node": "Article written?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt engineer": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Thinking Claude": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Content writer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Article written?": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Is it good enough?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Mini model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Prompt engineer",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is it good enough?": {
+      "main": [
+        [
+          {
+            "node": "Prompt engineer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Content writer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Page structure analiser": {
+      "main": [
+        [
+          {
+            "node": "Content writer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Auto-fixing Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Content writer",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Auto-fixing Output Parser",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-03T10:50:51.625Z",
+  "id": "dYCjnYJ7LVlHkyi8",
+  "isArchived": false,
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "0dada58e-d18d-427d-a417-5107215cafae",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -1184,
+        640
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "16rMg45cnPeJMoaCQmmhF5dvsbpkwtINUTx57WEkcDDM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16rMg45cnPeJMoaCQmmhF5dvsbpkwtINUTx57WEkcDDM/edit?usp=drivesdk",
+          "cachedResultName": "Example SEO research"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": 268886635,
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16rMg45cnPeJMoaCQmmhF5dvsbpkwtINUTx57WEkcDDM/edit#gid=268886635",
+          "cachedResultName": "Blogs (ideas)"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Completed",
+              "lookupValue": "={{ false }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f6c0ad4f-cd40-4dc9-b05b-d0c29d87a8e0",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        -992,
+        640
+      ],
+      "typeVersion": 4.5,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "sendAndWait",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "C090P7V3QUQ",
+          "cachedResultName": "n8n-trigger"
+        },
+        "message": "={\n  \"blocks\": [\n    {\n      \"type\": \"section\",\n      \"text\": {\n        \"type\": \"mrkdwn\",\n        \"text\": \"*New article waiting to be published on Webflow*:{{ $('Content writer').item.json.output.match(/^# (.*)/)?.[1] || 'Untitled' }}\"\n      },\n      \"accessory\": {\n        \"type\": \"image\",\n        \"image_url\": \"{{ $json.output }}\",\n        \"alt_text\": \"Article thumbnail\"\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "05b593a7-c7ef-4b02-bad1-17a7302618de",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        704,
+        880
+      ],
+      "webhookId": "1aed847c-e1d6-42a6-8944-6cb36558911f",
+      "typeVersion": 2.3,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "16rMg45cnPeJMoaCQmmhF5dvsbpkwtINUTx57WEkcDDM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16rMg45cnPeJMoaCQmmhF5dvsbpkwtINUTx57WEkcDDM/edit?usp=drivesdk",
+          "cachedResultName": "Example SEO research"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": 268886635,
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130zi0ImQlwMxzYEFXE9yUOmjqZ5u-d2gyUUc5ncKP5c/edit#gid=268886635",
+          "cachedResultName": "Blogs (ideas)"
+        },
+        "columns": {
+          "value": {
+            "Completed": "=true",
+            "row_number": "={{ $('Google Sheets').item.json.row_number }}"
+          },
+          "schema": [
+            {
+              "id": "URL",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "URL",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Traffic",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Traffic",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Traffic value",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Traffic value",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Top keyword",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Top keyword",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Position",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "required": false,
+              "displayName": "Position",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Completed",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "Completed",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "type": "string",
+              "display": true,
+              "removed": false,
+              "readOnly": true,
+              "required": false,
+              "displayName": "row_number",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [
+            "row_number"
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "800934ca-895f-4a9b-a14d-699e6eadc1fe",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "position": [
+        1024,
+        928
+      ],
+      "typeVersion": 4.5
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "siteId": "648717e882e5860a12ab9d1c",
+        "collectionId": "64b1bae9c2d06f1241365376",
+        "live": true,
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "cover-image",
+              "fieldValue": "={{ $('get_image_url').item.json.output }}"
+            },
+            {
+              "fieldId": "name",
+              "fieldValue": "={{ $('Content writer').item.json.output.article.match(/<h2>(.*?)<\\/h2>/)?.[1].trim() || '' }}"
+            },
+            {
+              "fieldId": "article-body-text",
+              "fieldValue": "={{ $('Content writer').item.json.output.article.replace(/<h1>|<\\/h1>/g, '') }}"
+            },
+            {
+              "fieldId": "read-time",
+              "fieldValue": "5 min"
+            },
+            {
+              "fieldId": "short-paragraph",
+              "fieldValue": "={{ $('Content writer').item.json.output.summary }}"
+            },
+            {
+              "fieldId": "first-post-image",
+              "fieldValue": "={{ $('get_image_url').item.json.output }}"
+            }
+          ]
+        }
+      },
+      "id": "5c1915be-33ec-4cfb-aae9-917a57af81b3",
+      "name": "Webflow",
+      "type": "n8n-nodes-base.webflow",
+      "position": [
+        1024,
+        752
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "id": "7a21e912-732f-4891-9f13-0612a903cb0b",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        544,
+        640
+      ],
+      "webhookId": "506e3c2e-e023-4473-99f7-6ff9649500b8",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.urls.get }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer <token>"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8284ae35-75e8-4f29-a886-8cd1bc0a2a65",
+      "name": "get_image_url",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        752,
+        640
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/black-forest-labs/flux-1.1-pro/predictions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer <token> //move this up"
+            },
+            {
+              "name": "Prefer",
+              "value": "wait"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"input\": {\n      \"prompt\": \"{{$json.output.replace(/[\\\"“”’\\n]/g, '')}}\",\n      \"go_fast\": false,\n      \"lora_scale\": 1,\n      \"megapixels\": \"1\",\n      \"num_outputs\": 1,\n      \"aspect_ratio\": \"16:9\",\n      \"output_format\": \"png\",\n      \"guidance_scale\": 3.5,\n      \"output_quality\": 100,\n      \"prompt_strength\": 0.8,\n      \"extra_lora_scale\": 1,\n      \"num_inference_steps\": 50\n}\n}",
+        "options": {}
+      },
+      "id": "54ac7e4a-937b-4c68-bfa8-ee54b52f0aab",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        592,
+        416
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert SEO writer working for www.productai.photo.\n\nRewrite the following article directly and return the full SEO-optimized version **in one complete response**, in **JSON** format with the following structure:\n\n{\n  \"article\": \"HTML Markdown-formatted article goes here\",\n  \"summary\": \"1–2 sentence summary of the article here\"\n}\n\nReturn only the requested output with no explanations, commentary, or additional text.\n\n## Guidelines:\n- Use the primary keyword:{{ $('Google Sheets').item.json['Top keyword'] }}  throughout the article, naturally and repeatedly.\n- Follow this exact structure based on the original HTML:\n  1. Header Navigation (SEO context)\n  2. Hero Section (main headline + paragraph)\n  3. Main Content Sections (H2s, H3s, internal links <a> tags)\n  4. Use Case Explanations\n  5. Step-by-Step Tutorial (numbered list with headings)\n  6. Call-to-Action Section (use link: create.productai.photo)\n  8. Technical SEO elements (image alt text, responsive, semantic)\n\n## Markdown Formatting:\n- Don't use H1 for the article title, start with H2.\n- Use H2 html tag for main sections and H3 html tag for subsections.\n- Short paragraphs, clear headings, internal links where relevant.\n- All CTA buttons or links use <a> tag must point to: **create.productai.photo**\n- Add **bold**, *italic*, and lists <li> where helpful.\n- User rich text elements HTML:\n* Paragraphs\n* Heading tags (H1-H6)\n* Images\n* Image captions\n* Image alt attributes\n* Custom code\n* Block quotes\n* Unordered lists (bulleted)\n* Ordered lists (numbered)\n* Videos (Youtube, Vimeo)\n* Rich media (Google maps, SoundCloud, Imgur, Giphy, Codepen, and more)\n\n## Output Rules:\n- DO NOT say “I will now rewrite...” or \"I'll rewrite the article based on your requirements. \" explain anything, just return the article.\n- DO NOT include planning or step-by-step generation.\n- Just return the **fully rewritten markdown article** in the required JSON structure.\n- Include a brief SEO-friendly summary.\n- Instead of a competition company name like (PixelCut, pixelcut, CreatorKit, Soona, Pebblely), ALWAYS use \"ProductAI\"\n\n## Source Article:\nRewrite the following article: {{ $('Google Sheets').item.json.URL }} \n\n\n## Content Structure:\n{{ $json.output }} \n\n## Take internal links from webflow tool",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "8b086e15-9040-4bd8-9f06-6e84fb069c00",
+      "name": "Content writer",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -320,
+        720
+      ],
+      "executeOnce": false,
+      "typeVersion": 1.9,
+      "alwaysOutputData": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert at generating detailed prompts for AI image generators (like Midjourney or DALL-E) to create eye-catching, clickable thumbnail images.\n\nYour Task:\nGiven the full text of an article, analyze and identify its main topic and tone. Based on your analysis, create a clear, visually descriptive prompt suitable for generating a thumbnail image that will attract viewers and convey the essence of the article.\n\nGuidelines:\n\nHighlight the article’s key theme, main characters or elements, and any emotions you want the image to evoke.\nSuggest specific visuals, colors, moods, and, if suitable, stylish text overlays.\nKeep the prompt concise but rich in visual detail so the resulting image will be engaging and informative.\nAvoid vague terms—be as specific as possible.\nExample Input:\n(Article about the rise of electric vehicles and their impact on the auto industry.)\n\nExample Output:\n\"Create a bold, modern thumbnail depicting a sleek electric car zooming down a futuristic highway with city skyscrapers in the background. Use vibrant blues and greens to symbolize innovation and eco-friendliness. Add stylized lightning bolts and a glowing 'EV Revolution' text overlay. Convey excitement and progress.\"\n\nArticle:\n{{ $('Content writer').item.json.output.article }}",
+        "options": {}
+      },
+      "id": "202317d8-7d2e-4bab-af69-b6fc4d006338",
+      "name": "Prompt engineer",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        576,
+        272
+      ],
+      "typeVersion": 1.9
+    },
+    {
+      "parameters": {
+        "options": {
+          "prompt": "Instructions:\n--------------\nOutput the format as:\n{\n\"article\": \"long article text\",\n\"summary\": \"summary of article\"\n}\n\n--------------\nCompletion:\n--------------\nAll attibutes are full field is {{completed}}\n\n--------------\n\nAbove, the Completion did not satisfy the constraints given in the Instructions.\nError:\n--------------\n{error}\n--------------\n\nPlease try again. Please only respond with an answer that satisfies the constraints laid out in the Instructions:\n\nWrite the article and give output"
+        }
+      },
+      "id": "ac83507c-4fda-4fe2-a532-a32422098746",
+      "name": "Auto-fixing Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserAutofixing",
+      "position": [
+        112,
+        800
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\"article\": \"long article text\",\n\"summary\": \"summary of article\",\n\"author\": \"Marko Balažic\"\n}"
+      },
+      "id": "e3f06d51-b5eb-4d97-bc2e-a721aaed8585",
+      "name": "Structured Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "position": [
+        160,
+        992
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "o4-mini",
+          "cachedResultName": "o4-mini"
+        },
+        "options": {}
+      },
+      "id": "36cf3e4f-8e05-42c1-8a2f-a73adfad6922",
+      "name": "OpenAI Mini model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        288,
+        992
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Google Sheets').item.json.URL }}",
+        "options": {}
+      },
+      "id": "c8426ba6-c53e-4e71-967e-fe19875b1e2d",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -784,
+        640
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "C090P7V3QUQ",
+          "cachedResultName": "n8n-trigger"
+        },
+        "text": "Looks like Content writer produced nothing",
+        "otherOptions": {}
+      },
+      "id": "ff006618-b9ba-4bf1-9443-974cb7938634",
+      "name": "Send error",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        704,
+        1056
+      ],
+      "webhookId": "b36fbb7c-6995-4a0d-8b23-c6d33b8d1bfb",
+      "executeOnce": true,
+      "typeVersion": 2.3,
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "mNk6zHfToN2NzdNC",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert SEO writer. You will get page data return me bulltpoints for what sections are being used in this webpage. for example:\n- content\n- faq\n- testimonials \n\n{{ $json.data }}\n\nFor each section also give me what is the key point for SEO",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "e11e93f5-1cc1-4bd6-b8eb-a17abdb6647a",
+      "name": "Page structure analiser",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -752,
+        768
+      ],
+      "executeOnce": true,
+      "typeVersion": 1.9,
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-3-5-haiku-20241022",
+          "cachedResultName": "Claude Haiku 3.5"
+        },
+        "options": {}
+      },
+      "id": "c511ad2b-d811-4bb8-bc24-c68d93c64eaf",
+      "name": "Haiku ",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "position": [
+        -784,
+        928
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-20250514",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {
+          "maxTokensToSample": 4096,
+          "thinking": false
+        }
+      },
+      "id": "3570e187-3ada-4335-83b2-2e84eba85735",
+      "name": "Thinking Claude",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "position": [
+        -336,
+        976
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst updatedItems = items.map((item) => {\n  let html = item?.json?.data;\n\n  // Trim to body\n  let bodyStart = html.indexOf(\"<body>\");\n  let bodyEnd = html.indexOf(\"</body>\") + 7;\n  html = html.slice(bodyStart, bodyEnd);\n\n  // Remove header\n  html = html.replace(/<header>[\\s\\S]*?<\\/header>/g, \"\");\n\n  // Remove scripts\n  html = html.replace(/<script>[\\s\\S]*?<\\/script>/g, \"\");\n\n  // Remove iframes\n  html = html.replace(/<iframe[\\s\\S]*?<\\/iframe>/g, \"\");\n\n  item.json.data = html;\n  return item;\n});\n\nreturn updatedItems;\n"
+      },
+      "id": "2b519212-57e3-44e8-bed9-9687a1fdf011",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        -640,
+        640
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "7FHTcSuCIjHvvBfe",
+          "cachedResultName": "Shape workflows — SEO Content evaluator"
+        },
+        "workflowInputs": {
+          "value": {
+            "article": "={{ $json.output.article }}",
+            "summary": "={{ $json.output.summary }}"
+          },
+          "schema": [
+            {
+              "id": "article",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "article",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "summary",
+              "type": "string",
+              "display": true,
+              "required": false,
+              "displayName": "summary",
+              "defaultMatch": false,
+              "canBeUsedToMatch": true
+            }
+          ],
+          "mappingMode": "defineBelow",
+          "matchingColumns": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "fdb8e09d-21a1-48ac-bc9a-ce3d0063b12c",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "position": [
+        128,
+        320
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "content": "## Content production ",
+        "height": 560,
+        "width": 420,
+        "color": 7
+      },
+      "id": "63a89532-f99b-478f-ac0b-5cf01d12a49f",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        496,
+        208
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Content publishing",
+        "height": 580,
+        "width": 500,
+        "color": 7
+      },
+      "id": "cf129d0c-bcd6-4062-a66d-db61639f438b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        944,
+        656
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "cf6875df-2d76-4463-81bc-6d56a258bfe8",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1232,
+        880
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Human check",
+        "height": 440,
+        "width": 300,
+        "color": 7
+      },
+      "id": "2c32c8cb-c6eb-4dcf-9703-87f83c2bbcad",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        608,
+        800
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## SEO quality vatidation ",
+        "height": 280,
+        "width": 400,
+        "color": 7
+      },
+      "id": "4819e676-b554-4d5d-b89b-b0543a3ef702",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        64,
+        208
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "ce170e51-4f33-4b18-bf9d-85416b7c5ad6",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $json.output[1].percent_ok }}",
+              "rightValue": 60
+            },
+            {
+              "id": "39161f8c-bba5-4c48-b2d3-dda06a7ea84d",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $json.output[5].percent_ok }}",
+              "rightValue": 60
+            },
+            {
+              "id": "b8c3b829-3450-4952-816e-9240cf235f58",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              },
+              "leftValue": "={{ $json.output[8].percent_ok }}",
+              "rightValue": 50
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "820561f1-4836-4544-a741-27c6b7c3f16e",
+      "name": "Is it good enough?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        304,
+        320
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "ce170e51-4f33-4b18-bf9d-85416b7c5ad6",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.output.article }}",
+              "rightValue": ""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f62bc9af-ea2c-472a-9965-ea93407d90f3",
+      "name": "Article written?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        128,
+        608
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "content": "## Content layout?",
+        "height": 500,
+        "width": 400,
+        "color": 7
+      },
+      "id": "5cfc8efb-0565-4b53-9204-612e6744af87",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -816,
+        560
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Content writer",
+        "height": 560,
+        "width": 860,
+        "color": 7
+      },
+      "id": "12bfedba-a9a4-455f-b685-dd9869116ed7",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -400,
+        576
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Get URLs of current related articles on productai.photo so they can be used ad internal links.",
+        "operation": "getAll",
+        "siteId": "648717e882e5860a12ab9d1c",
+        "collectionId": "64b1bae9c2d06f1241365376"
+      },
+      "id": "c26cfa95-685e-4fa0-aebb-a2c06a308316",
+      "name": "Get Articles",
+      "type": "n8n-nodes-base.webflowTool",
+      "position": [
+        -176,
+        976
+      ],
+      "typeVersion": 2
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {
+          "Hour": "15",
+          "Year": "2025",
+          "Month": "June",
+          "Minute": "00",
+          "Second": "20",
+          "Timezone": "Europe/Ljubljana (UTC+02:00)",
+          "timestamp": "2025-06-24T15:00:20.009+02:00",
+          "Day of week": "Tuesday",
+          "Day of month": "24",
+          "Readable date": "June 24th 2025, 3:00:20 pm",
+          "Readable time": "3:00:20 pm"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-03T10:50:51.633Z",
+      "updatedAt": "2025-09-03T10:50:51.633Z",
+      "role": "workflow:owner",
+      "workflowId": "dYCjnYJ7LVlHkyi8",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-03T10:50:51.625Z",
+  "versionId": "36b9b349-5709-42fc-b622-90efbc8c753a"
+}
