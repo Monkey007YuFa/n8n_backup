@@ -1,0 +1,109 @@
+{
+  "active": false,
+  "connections": {
+    "Notion Trigger": {
+      "main": [
+        [
+          {
+            "node": "Update a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-04T05:21:40.113Z",
+  "id": "PQotHoLegYBjdJgB",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "为Chery Studio保存的内容创建时间",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "event": "pagedUpdatedInDatabase",
+        "databaseId": {
+          "__rl": true,
+          "value": "2634e51e-930e-8052-a0f5-c7e2560253f1",
+          "mode": "list",
+          "cachedResultName": "Chery Studio保存内容",
+          "cachedResultUrl": "https://www.notion.so/2634e51e930e8052a0f5c7e2560253f1"
+        }
+      },
+      "type": "n8n-nodes-base.notionTrigger",
+      "typeVersion": 1,
+      "position": [
+        -464,
+        -32
+      ],
+      "id": "8a142ea5-ee52-408d-b919-0ad02540d956",
+      "name": "Notion Trigger",
+      "credentials": {
+        "notionApi": {
+          "id": "nuIqFzrtpw2DcYBC",
+          "name": "n8n工作流"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        -256,
+        -32
+      ],
+      "id": "12caa103-891e-4129-829e-f531703eaa2c",
+      "name": "Update a database page",
+      "credentials": {
+        "notionApi": {
+          "id": "nuIqFzrtpw2DcYBC",
+          "name": "n8n工作流"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-04T05:21:40.121Z",
+      "updatedAt": "2025-09-04T05:21:40.121Z",
+      "role": "workflow:owner",
+      "workflowId": "PQotHoLegYBjdJgB",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": {
+    "node:Notion Trigger": {
+      "lastTimeChecked": "2025-09-04T05:40:00.000Z",
+      "possibleDuplicates": [
+        "2644e51e-930e-8189-b3ce-fe9ff1bd22ea"
+      ]
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-09-04T05:44:51.000Z",
+  "versionId": "3843982b-fc78-44e0-81c9-9887292b1ec4"
+}
