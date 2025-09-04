@@ -374,7 +374,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 3",
+  "name": "根据关键词和标题生成文章",
   "nodes": [
     {
       "parameters": {
@@ -10342,6 +10342,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-03T14:57:45.000Z",
-  "versionId": "41de668e-af2c-4890-ae05-07afdc8abe40"
+  "updatedAt": "2025-09-04T03:10:00.000Z",
+  "versionId": "8db02c5f-4218-40ba-9e40-019912479c16"
 }
