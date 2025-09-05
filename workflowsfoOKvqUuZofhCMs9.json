@@ -73,7 +73,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "周报每周五定时生成",
+  "name": "007 周报每周五定时生成",
   "nodes": [
     {
       "parameters": {},
@@ -249,6 +249,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-09-01T12:45:04.000Z",
-  "versionId": "6e579dfd-aba2-4ef7-b18b-103b248d06a6"
+  "updatedAt": "2025-09-05T12:03:49.000Z",
+  "versionId": "5bb9d797-f0bd-4e75-94c0-cf44bb2d6f61"
 }
