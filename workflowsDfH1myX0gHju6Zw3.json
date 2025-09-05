@@ -262,7 +262,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "n8n自动备份到github",
+  "name": "007 n8n内容自动备份到github",
   "nodes": [
     {
       "parameters": {},
@@ -846,6 +846,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-08-28T14:09:39.000Z",
-  "versionId": "10645449-99f3-4df1-b794-e0504f0a7252"
+  "updatedAt": "2025-09-05T12:04:09.000Z",
+  "versionId": "718e116f-4dbd-4dcb-b8e5-77f807e65faa"
 }
