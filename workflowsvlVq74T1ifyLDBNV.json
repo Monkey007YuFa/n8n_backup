@@ -185,7 +185,10 @@
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
-            {}
+            {
+              "name": "Authorization",
+              "value": "Bearer $OPENROUTER_API_KEY"
+            }
           ]
         },
         "sendBody": true,
@@ -200,7 +203,13 @@
         -16
       ],
       "id": "9dc12e89-6bcb-48aa-8b72-072b261817f1",
-      "name": "d"
+      "name": "d",
+      "credentials": {
+        "openRouterApi": {
+          "id": "sqwHKt57ch9lMijX",
+          "name": "OpenRouter account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -219,6 +228,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T05:20:51.000Z",
-  "versionId": "032a8d49-b0e1-4499-8210-a22569d28cbb"
+  "updatedAt": "2025-09-04T10:41:11.000Z",
+  "versionId": "3c546eba-4975-4f7b-af45-a1cd15fec38f"
 }
