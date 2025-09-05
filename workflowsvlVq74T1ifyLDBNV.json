@@ -16,6 +16,11 @@
       "main": [
         [
           {
+            "node": "d1",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "d",
             "type": "main",
             "index": 0
@@ -46,6 +51,17 @@
       ]
     },
     "d": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "d1": {
       "main": [
         [
           {
@@ -180,8 +196,6 @@
       "parameters": {
         "method": "POST",
         "url": "https://openrouter.ai/api/v1/chat/completions",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "openRouterApi",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -193,23 +207,44 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"google/gemini-2.5-flash-image-preview:free\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('On form submission').item.json.text }}\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/png;base64,{{ $json.imageBase64 }}\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"model\": \"ggoogle/gemini-2.5-flash-image-preview\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('On form submission').item.json.text }}\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:image/png;base64,{{ $json.imageBase64 }}\"\n          }\n        }\n      ]\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1136,
-        -16
+        1168,
+        -176
       ],
       "id": "9dc12e89-6bcb-48aa-8b72-072b261817f1",
-      "name": "d",
-      "credentials": {
-        "openRouterApi": {
-          "id": "sqwHKt57ch9lMijX",
-          "name": "OpenRouter account"
-        }
-      }
+      "name": "d"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://yunwu.ai/fal-ai/nano-banana",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk-XmcLCfCVFBgyerm0h2yegxQVujX5Qz5lvpCwo4AjyOfZF2A7"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"prompt\": \"{{ $('On form submission').item.json.text }}\",\n    \"num_images\": 1\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1152,
+        160
+      ],
+      "id": "8cb9cd56-27d3-4b17-975e-964799410e63",
+      "name": "d1"
     }
   ],
   "pinData": {},
@@ -228,6 +263,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T10:41:11.000Z",
-  "versionId": "3c546eba-4975-4f7b-af45-a1cd15fec38f"
+  "updatedAt": "2025-09-05T04:29:27.000Z",
+  "versionId": "72933cca-da60-499f-bf97-2eba06ba617e"
 }
