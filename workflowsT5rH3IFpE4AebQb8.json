@@ -1,0 +1,222 @@
+{
+  "active": true,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生图模型": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-06T13:00:23.616Z",
+  "id": "T5rH3IFpE4AebQb8",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "007 生成文案和配图",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -512,
+        -176
+      ],
+      "id": "2ac79459-d53f-46c0-838f-5b77db9d2371",
+      "name": "When chat message received",
+      "webhookId": "781f0eb3-c15f-456a-9472-6130614e839d"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gemini-2.5-flash-lite",
+          "mode": "id"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "你是鲁迅，擅长使用鲁迅的口吻写作",
+              "role": "system"
+            },
+            {
+              "content": "输出结果包括一下几个方面：title、content、prompt\n其中title为为文章创作一个爆款标题；content文章的内容；prompt为根据文章内容，写一个图像的提示词\n\n输出结果请严格按照下面的JSON格式！\n{\n  \"title\":\"为文章创作一个爆款标题\",\n  \"content\":\"文章的内容\",\n  \"prompt\":\"根据文章内容，写一个图像的提示词\"\n}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -304,
+        -176
+      ],
+      "id": "c0fe1a5b-8f46-4612-86f0-ac201d14f46e",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "f7vxtXQvXvlJ1YpK",
+          "name": "OpenAi（云雾API）"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-flash-image-preview",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-flash-image-preview"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        16
+      ],
+      "id": "06ec9e36-829b-4e53-88ec-3d948e16ae30",
+      "name": "生图模型",
+      "credentials": {
+        "openAiApi": {
+          "id": "f7vxtXQvXvlJ1YpK",
+          "name": "OpenAi（云雾API）"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.content.prompt }}",
+        "options": {
+          "systemMessage": ""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        64,
+        -176
+      ],
+      "id": "59919bba-48e9-4715-971c-35d856df644d",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        688,
+        -176
+      ],
+      "id": "ec874af1-3676-4904-bedf-a8c5ebfe2646",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31ab97f-ea41-4b94-b376-0ccbc6b7ca51",
+              "name": "data",
+              "value": "={{ $json[\"output\"].split('data:image/png;base64,')[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        -176
+      ],
+      "id": "03bf3a6d-aa04-4ae4-b85e-e684e440d08f",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-06T13:00:23.630Z",
+      "updatedAt": "2025-09-06T13:00:23.630Z",
+      "role": "workflow:owner",
+      "workflowId": "T5rH3IFpE4AebQb8",
+      "projectId": "VqrcM1dcqhGnCvdT"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-09-07T13:04:22.000Z",
+  "versionId": "d1fc2fcd-400f-41c6-8f3e-9d66b6ac2637"
+}
