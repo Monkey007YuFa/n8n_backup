@@ -1,31 +1,9 @@
 {
   "active": false,
   "connections": {
-    "On form submission": {
-      "main": [
-        [
-          {
-            "node": "Extract from File",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Extract from File": {
       "main": [
-        [
-          {
-            "node": "d1",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "d",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Edit Fields": {
@@ -50,6 +28,50 @@
         ]
       ]
     },
+    "d1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "生图模型": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "d": {
       "main": [
         [
@@ -61,15 +83,20 @@
         ]
       ]
     },
-    "d1": {
+    "Extract from File1": {
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "AI Agent1",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "On form submission1": {
+      "main": [
+        []
       ]
     }
   },
@@ -79,36 +106,6 @@
   "meta": null,
   "name": "图生图（banana）",
   "nodes": [
-    {
-      "parameters": {
-        "formTitle": "Nano Banana使用",
-        "formFields": {
-          "values": [
-            {
-              "fieldLabel": "image",
-              "fieldType": "file",
-              "multipleFiles": false
-            },
-            {
-              "fieldLabel": "text"
-            }
-          ]
-        },
-        "options": {
-          "appendAttribution": false,
-          "customCss": ":root {\n\t--font-family: 'Open Sans', sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-body: 12px;\n\t--font-size-label: 14px;\n\t--font-size-test-notice: 12px;\n\t--font-size-input: 14px;\n\t--font-size-header: 20px;\n\t--font-size-paragraph: 14px;\n\t--font-size-link: 12px;\n\t--font-size-error: 12px;\n\t--font-size-html-h1: 28px;\n\t--font-size-html-h2: 20px;\n\t--font-size-html-h3: 16px;\n\t--font-size-html-h4: 14px;\n\t--font-size-html-h5: 12px;\n\t--font-size-html-h6: 10px;\n\t--font-size-subheader: 14px;\n\n\t/* Colors */\n\t--color-background: #fbfcfe;\n\t--color-test-notice-text: #e6a23d;\n\t--color-test-notice-bg: #fefaf6;\n\t--color-test-notice-border: #f6dcb7;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #dbdfe7;\n\t--color-card-shadow: rgba(99, 77, 255, 0.06);\n\t--color-link: #7e8186;\n\t--color-header: #525356;\n\t--color-label: #555555;\n\t--color-input-border: #dbdfe7;\n\t--color-input-text: #71747A;\n\t--color-focus-border: rgb(90, 76, 194);\n\t--color-submit-btn-bg: #ff6d5a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #ea1f30;\n\t--color-required: #ff6d5a;\n\t--color-clear-button-bg: #7e8186;\n\t--color-html-text: #555;\n\t--color-html-link: #ff6d5a;\n\t--color-header-subtext: #7e8186;\n\n\t/* Border Radii */\n\t--border-radius-card: 8px;\n\t--border-radius-input: 6px;\n\t--border-radius-clear-btn: 50%;\n\t--card-border-radius: 8px;\n\n\t/* Spacing */\n\t--padding-container-top: 24px;\n\t--padding-card: 24px;\n\t--padding-test-notice-vertical: 12px;\n\t--padding-test-notice-horizontal: 24px;\n\t--margin-bottom-card: 16px;\n\t--padding-form-input: 12px;\n\t--card-padding: 24px;\n\t--card-margin-bottom: 16px;\n\n\t/* Dimensions */\n\t--container-width: 448px;\n\t--submit-btn-height: 48px;\n\t--checkbox-size: 18px;\n\n\t/* Others */\n\t--box-shadow-card: 0px 4px 16px 0px var(--color-card-shadow);\n\t--opacity-placeholder: 0.5;\n}"
-        }
-      },
-      "type": "n8n-nodes-base.formTrigger",
-      "typeVersion": 2.2,
-      "position": [
-        736,
-        -16
-      ],
-      "id": "5647c168-fdb1-4f91-a25f-17febf5364ca",
-      "name": "On form submission",
-      "webhookId": "10346a5c-f93e-4e37-84d2-fbe870836cd6"
-    },
     {
       "parameters": {
         "operation": "completion",
@@ -195,6 +192,113 @@
     {
       "parameters": {
         "method": "POST",
+        "url": "https://yunwu.ai/fal-ai/nano-banana",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk-XmcLCfCVFBgyerm0h2yegxQVujX5Qz5lvpCwo4AjyOfZF2A7"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"prompt\": \"{{ $('On form submission').item.json.text }}\",\n    \"num_images\": 1\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1152,
+        160
+      ],
+      "id": "8cb9cd56-27d3-4b17-975e-964799410e63",
+      "name": "d1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-flash-image-preview",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-flash-image-preview"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1088,
+        656
+      ],
+      "id": "0b210b15-f345-45ba-89a9-0c8beb5c3d0c",
+      "name": "生图模型",
+      "credentials": {
+        "openAiApi": {
+          "id": "f7vxtXQvXvlJ1YpK",
+          "name": "OpenAi（云雾API）"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.content.prompt }}",
+        "options": {
+          "systemMessage": ""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1088,
+        480
+      ],
+      "id": "7e007058-a147-4fed-8ea8-435ca5658eca",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1680,
+        480
+      ],
+      "id": "452d2b68-2217-48cd-9455-a2799de4154e",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31ab97f-ea41-4b94-b376-0ccbc6b7ca51",
+              "name": "data",
+              "value": "={{ $json[\"output\"].split('data:image/png;base64,')[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1440,
+        480
+      ],
+      "id": "d5d09428-6821-4475-83e9-72341c21a22f",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
         "url": "https://openrouter.ai/api/v1/chat/completions",
         "sendHeaders": true,
         "headerParameters": {
@@ -221,30 +325,63 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://yunwu.ai/fal-ai/nano-banana",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "operation": "binaryToPropery",
+        "binaryPropertyName": "image",
+        "destinationKey": "imageBase64",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        880,
+        480
+      ],
+      "id": "7c27b446-4895-41b2-a896-2546a75c4643",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "formTitle": "Nano Banana使用",
+        "formFields": {
+          "values": [
             {
-              "name": "Authorization",
-              "value": "Bearer sk-XmcLCfCVFBgyerm0h2yegxQVujX5Qz5lvpCwo4AjyOfZF2A7"
+              "fieldLabel": "image",
+              "fieldType": "file",
+              "multipleFiles": false
+            },
+            {
+              "fieldLabel": "text"
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n    \"prompt\": \"{{ $('On form submission').item.json.text }}\",\n    \"num_images\": 1\n}",
+        "options": {
+          "appendAttribution": false,
+          "customCss": ":root {\n\t--font-family: 'Open Sans', sans-serif;\n\t--font-weight-normal: 400;\n\t--font-weight-bold: 600;\n\t--font-size-body: 12px;\n\t--font-size-label: 14px;\n\t--font-size-test-notice: 12px;\n\t--font-size-input: 14px;\n\t--font-size-header: 20px;\n\t--font-size-paragraph: 14px;\n\t--font-size-link: 12px;\n\t--font-size-error: 12px;\n\t--font-size-html-h1: 28px;\n\t--font-size-html-h2: 20px;\n\t--font-size-html-h3: 16px;\n\t--font-size-html-h4: 14px;\n\t--font-size-html-h5: 12px;\n\t--font-size-html-h6: 10px;\n\t--font-size-subheader: 14px;\n\n\t/* Colors */\n\t--color-background: #fbfcfe;\n\t--color-test-notice-text: #e6a23d;\n\t--color-test-notice-bg: #fefaf6;\n\t--color-test-notice-border: #f6dcb7;\n\t--color-card-bg: #ffffff;\n\t--color-card-border: #dbdfe7;\n\t--color-card-shadow: rgba(99, 77, 255, 0.06);\n\t--color-link: #7e8186;\n\t--color-header: #525356;\n\t--color-label: #555555;\n\t--color-input-border: #dbdfe7;\n\t--color-input-text: #71747A;\n\t--color-focus-border: rgb(90, 76, 194);\n\t--color-submit-btn-bg: #ff6d5a;\n\t--color-submit-btn-text: #ffffff;\n\t--color-error: #ea1f30;\n\t--color-required: #ff6d5a;\n\t--color-clear-button-bg: #7e8186;\n\t--color-html-text: #555;\n\t--color-html-link: #ff6d5a;\n\t--color-header-subtext: #7e8186;\n\n\t/* Border Radii */\n\t--border-radius-card: 8px;\n\t--border-radius-input: 6px;\n\t--border-radius-clear-btn: 50%;\n\t--card-border-radius: 8px;\n\n\t/* Spacing */\n\t--padding-container-top: 24px;\n\t--padding-card: 24px;\n\t--padding-test-notice-vertical: 12px;\n\t--padding-test-notice-horizontal: 24px;\n\t--margin-bottom-card: 16px;\n\t--padding-form-input: 12px;\n\t--card-padding: 24px;\n\t--card-margin-bottom: 16px;\n\n\t/* Dimensions */\n\t--container-width: 448px;\n\t--submit-btn-height: 48px;\n\t--checkbox-size: 18px;\n\n\t/* Others */\n\t--box-shadow-card: 0px 4px 16px 0px var(--color-card-shadow);\n\t--opacity-placeholder: 0.5;\n}"
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        672,
+        320
+      ],
+      "id": "2a858512-4c46-4a73-af43-a0d849280025",
+      "name": "On form submission1",
+      "webhookId": "8ed33076-1d95-4141-a039-50d23ddb8480"
+    },
+    {
+      "parameters": {
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
       "position": [
-        1152,
-        160
+        608,
+        480
       ],
-      "id": "8cb9cd56-27d3-4b17-975e-964799410e63",
-      "name": "d1"
+      "id": "9b0d6c08-7711-4980-b2e4-c07b3607aa02",
+      "name": "On form submission",
+      "webhookId": "f9b7ffac-8b1a-4801-a3d6-2b5f2d219662"
     }
   ],
   "pinData": {},
@@ -263,6 +400,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-05T04:29:27.000Z",
-  "versionId": "72933cca-da60-499f-bf97-2eba06ba617e"
+  "updatedAt": "2025-09-07T14:29:07.000Z",
+  "versionId": "d4e26bc7-fd55-48d2-b9b2-a282163c891c"
 }
