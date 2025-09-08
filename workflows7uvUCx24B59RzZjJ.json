@@ -442,7 +442,7 @@
       "credentials": {
         "openAiApi": {
           "id": "f7vxtXQvXvlJ1YpK",
-          "name": "OpenAi account 2"
+          "name": "OpenAi（云雾API）"
         }
       }
     },
@@ -557,7 +557,7 @@
       "credentials": {
         "openAiApi": {
           "id": "f7vxtXQvXvlJ1YpK",
-          "name": "OpenAi account 2"
+          "name": "OpenAi（云雾API）"
         }
       }
     },
@@ -955,7 +955,7 @@
       "credentials": {
         "openAiApi": {
           "id": "f7vxtXQvXvlJ1YpK",
-          "name": "OpenAi account 2"
+          "name": "OpenAi（云雾API）"
         }
       }
     },
@@ -1070,7 +1070,7 @@
       "credentials": {
         "openAiApi": {
           "id": "f7vxtXQvXvlJ1YpK",
-          "name": "OpenAi account 2"
+          "name": "OpenAi（云雾API）"
         }
       }
     },
@@ -10275,16 +10275,6 @@
         }
       }
     ],
-    "On form submission": [
-      {
-        "json": {
-          "Article's Title": "爆火的生图人工智能banana",
-          "Key Words": "AI，人工智能，gemini，banana，生图",
-          "submittedAt": "2025-09-03T10:35:36.506-04:00",
-          "formMode": "test"
-        }
-      }
-    ],
     "Prmopts For Search": [
       {
         "json": {
@@ -10397,6 +10387,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-04T10:49:50.000Z",
-  "versionId": "7391cfd0-410c-4ec3-bc85-98ac914579f1"
+  "updatedAt": "2025-09-07T14:32:31.000Z",
+  "versionId": "bda4efd9-ec36-46ca-b8d2-320208450530"
 }
