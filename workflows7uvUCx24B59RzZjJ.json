@@ -624,7 +624,13 @@
         2480
       ],
       "retryOnFail": false,
-      "typeVersion": 4.2
+      "typeVersion": 4.2,
+      "credentials": {
+        "notionApi": {
+          "id": "NbdW9ArXkaSIpcEG",
+          "name": "notion周报数据库"
+        }
+      }
     },
     {
       "parameters": {
@@ -10387,6 +10393,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-09-07T14:32:31.000Z",
-  "versionId": "bda4efd9-ec36-46ca-b8d2-320208450530"
+  "updatedAt": "2025-09-08T14:48:22.000Z",
+  "versionId": "977a3045-b5ba-49a6-afc6-ec758fddbdae"
 }
